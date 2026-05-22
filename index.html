@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naseiro 2025 — A Romaxe do Bo Xantar</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Un viaje cinematográfico interactivo por las celebraciones, la naturaleza y la alegría de la Romería de Naseiro 2025. Explora fotos, vídeos y momentos memorables.">
+  <meta name="keywords" content="Naseiro 2025, Romaxe do Bo Xantar, Romería Naseiro, Viveiro, Galicia, Fotos Naseiro, Carrusel de fotos">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- Main Navigation / Header -->
+  <header class="main-header">
+    <div class="header-logo">
+      <span class="logo-accent">Naseiro</span><span>2025</span>
+    </div>
+    <nav class="header-nav">
+      <button class="nav-btn active" data-target="home-section">Inicio</button>
+      <button class="nav-btn" data-target="gallery-section">Galería</button>
+      <button class="nav-btn" id="nav-favs-btn">
+        <i data-lucide="heart"></i>
+        <span>Favoritos</span>
+        <span class="fav-count-badge" id="fav-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Background Video Loop -->
+  <section id="home-section" class="hero-section">
+    <div class="hero-video-container">
+      <video class="hero-video-bg" autoplay muted loop playsinline>
+        <source src="Naseiro 2025/IMG_4592.mp4" type="video/mp4">
+        <!-- Fallback if video fails to load -->
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    
+    <div class="hero-content">
+      <p class="hero-subtitle">Crónica Visual de un Encuentro Único</p>
+      <h1 class="hero-title">A Romaxe do <br><span class="text-highlight">Bo Xantar</span></h1>
+      <p class="hero-description">
+        Siente el río, la música, los brindis y la magia de las cabañas de madera en el valle de Naseiro. 
+        Un compendio interactivo de recuerdos listos para revivir paso a paso.
+      </p>
+      <div class="hero-actions">
+        <a href="#gallery-section" class="btn btn-primary btn-lg">
+          <span>Explorar Galería</span>
+          <i data-lucide="arrow-down"></i>
+        </a>
+        <button class="btn btn-outline btn-lg" id="hero-quick-slideshow">
+          <i data-lucide="play"></i>
+          <span>Presentación Completa</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="scroll-indicator">
+      <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+      <span class="scroll-text">Desliza para ver más</span>
+    </div>
+  </section>
+
+  <!-- 3D Coverflow Highlights Section -->
+  <section class="highlights-section">
+    <div class="section-header">
+      <span class="section-tag">Destacados</span>
+      <h2 class="section-title">Momentos Estelares</h2>
+      <p class="section-subtitle">Arrastra o haz clic para sumergirte en la atmósfera vibrante de la fiesta.</p>
+    </div>
+
+    <!-- 3D Carousel Container -->
+    <div class="carousel-container-3d">
+      <div class="carousel-3d" id="carousel-3d-track">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+      
+      <!-- Carousel Navigation Buttons -->
+      <button class="carousel-nav-btn prev-btn" id="carousel-prev" aria-label="Anterior">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="carousel-nav-btn next-btn" id="carousel-next" aria-label="Siguiente">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+    
+    <!-- Carousel Dots/Indicator -->
+    <div class="carousel-dots" id="carousel-dots-container"></div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery-section" class="gallery-section">
+    <div class="section-header">
+      <span class="section-tag">El Álbum Completo</span>
+      <h2 class="section-title">Memorias del Valle</h2>
+      <p class="section-subtitle">Explora cada rincón de Naseiro 2025. Utiliza los filtros para navegar entre fotos, vídeos y tus favoritos.</p>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="gallery-controls">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">Todo</button>
+        <button class="filter-btn" data-filter="photos">
+          <i data-lucide="image"></i><span>Fotos</span>
+        </button>
+        <button class="filter-btn" data-filter="videos">
+          <i data-lucide="video"></i><span>Vídeos</span>
+        </button>
+        <button class="filter-btn" data-filter="favorites" id="filter-favorites-btn">
+          <i data-lucide="heart"></i><span>Favoritos</span>
+        </button>
+      </div>
+      
+      <div class="search-and-stats">
+        <div class="search-box">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="gallery-search" placeholder="Buscar por nombre...">
+          <button id="search-clear-btn" class="search-clear" style="display: none;">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="gallery-stats">
+          <span id="items-count-display">0 de 192</span> elementos
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Media Grid -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Media Cards generated dynamically by app.js -->
+    </div>
+    
+    <!-- Empty State for Search/Filters -->
+    <div class="empty-state" id="gallery-empty-state" style="display: none;">
+      <i data-lucide="folder-open" class="empty-icon"></i>
+      <h3>No se encontraron recuerdos</h3>
+      <p>Prueba a buscar otro término o cambia tus filtros de selección.</p>
+      <button class="btn btn-primary" id="btn-reset-filters">Restablecer filtros</button>
+    </div>
+  </section>
+
+  <!-- Immersive Fullscreen Lightbox / Slideshow Modal -->
+  <div class="lightbox" id="lightbox-modal">
+    <div class="lightbox-bg"></div>
+    
+    <!-- Lightbox Top Bar -->
+    <div class="lightbox-header">
+      <div class="lightbox-title-area">
+        <span class="lightbox-index" id="lightbox-counter">0 / 0</span>
+        <span class="lightbox-filename" id="lightbox-filename">IMG_XXXX.JPG</span>
+      </div>
+      
+      <!-- Lightbox Controls -->
+      <div class="lightbox-controls">
+        <!-- Slideshow Play/Pause -->
+        <button class="lightbox-control-btn" id="lightbox-slideshow-toggle" title="Iniciar presentación automática">
+          <i data-lucide="play" id="slideshow-icon"></i>
+        </button>
+        
+        <!-- Slideshow Interval Selector -->
+        <div class="slideshow-speed-selector" id="slideshow-speed-container">
+          <button class="speed-btn active" data-speed="3000">3s</button>
+          <button class="speed-btn" data-speed="5000">5s</button>
+          <button class="speed-btn" data-speed="10000">10s</button>
+        </div>
+
+        <!-- Favorite button -->
+        <button class="lightbox-control-btn" id="lightbox-fav-btn" title="Guardar en Favoritos">
+          <i data-lucide="heart" class="heart-icon"></i>
+        </button>
+
+        <!-- Fullscreen Toggle -->
+        <button class="lightbox-control-btn" id="lightbox-fullscreen-btn" title="Pantalla completa">
+          <i data-lucide="maximize-2"></i>
+        </button>
+        
+        <!-- Download File -->
+        <a href="" download class="lightbox-control-btn" id="lightbox-download-btn" title="Descargar archivo original">
+          <i data-lucide="download"></i>
+        </a>
+        
+        <!-- Close Button -->
+        <button class="lightbox-control-btn close-btn" id="lightbox-close-btn" title="Cerrar (Esc)">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lightbox Content Container -->
+    <div class="lightbox-content-wrapper">
+      <button class="lightbox-nav-btn prev-btn" id="lightbox-prev" aria-label="Anterior">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      
+      <div class="lightbox-media-container" id="lightbox-media-container">
+        <!-- Rendered dynamically (img or video) -->
+      </div>
+      
+      <button class="lightbox-nav-btn next-btn" id="lightbox-next" aria-label="Siguiente">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Lightbox Progress Bar for Slideshow Autoplay -->
+    <div class="lightbox-progress-bar" id="lightbox-progress-bar">
+      <div class="lightbox-progress-fill" id="lightbox-progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Sidebar Drawer: Favorites -->
+  <div class="favorites-drawer" id="favorites-drawer">
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <h3>Tus Favoritos</h3>
+        <button class="close-drawer-btn" id="close-drawer-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      
+      <div class="drawer-body" id="drawer-favorites-list">
+        <!-- Favorites list rendered dynamically -->
+      </div>
+      
+      <div class="drawer-footer">
+        <button class="btn btn-outline btn-full" id="clear-all-favorites">
+          <i data-lucide="trash-2"></i>
+          <span>Eliminar todos</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p class="footer-title">Naseiro 2025</p>
+    <p class="footer-copy">&copy; 2026. Creado con pasión y recuerdos del valle del río Landro.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="media-list.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
